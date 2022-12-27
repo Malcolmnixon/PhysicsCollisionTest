@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3i84lyo4wdm3"]
+
+[ext_resource type="Material" uid="uid://mp1nd25p12ma" path="res://assets/wahooney.itch.io/brown_grid_triplanar.tres" id="1_sxgpx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8l5rj"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dl407"]
+size = Vector3(2, 2, 2)
+
+[node name="CharacterBody" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8l5rj")
+surface_material_override/0 = ExtResource("1_sxgpx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dl407")

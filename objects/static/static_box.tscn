@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl3fdvukux6bo"]
+
+[ext_resource type="Material" uid="uid://uuykwv6e57ig" path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" id="1_8kw7d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4unwl"]
+size = Vector3(200, 200, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_410pf"]
+size = Vector3(200, 200, 200)
+
+[node name="StaticBody" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4unwl")
+surface_material_override/0 = ExtResource("1_8kw7d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_410pf")

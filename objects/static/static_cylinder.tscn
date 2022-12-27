@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://5kkc0qfmcbd3"]
+
+[ext_resource type="Material" uid="uid://uuykwv6e57ig" path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" id="1_ut11n"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tsn8h"]
+top_radius = 100.0
+bottom_radius = 100.0
+height = 200.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o0vml"]
+height = 200.0
+radius = 100.0
+
+[node name="StaticBody" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_tsn8h")
+surface_material_override/0 = ExtResource("1_ut11n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_o0vml")
