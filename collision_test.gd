@@ -3,7 +3,7 @@ extends Node3D
 
 var _static_body : StaticBody3D
 var _character_body : CharacterBody3D
-var _tumble := false
+var _orientation := 0
 var _collide := true
 var _duration := 0.0
 
@@ -29,13 +29,23 @@ func _process(delta):
 	_duration += delta
 
 	# Construct the character rotation
-	var character_rotation := Basis.IDENTITY
-	if _tumble:
-		character_rotation = Basis.from_euler(
-			Vector3(
-				_duration * 0.241352, 
-				_duration * 0.328472,
-				_duration * 0.442541))
+	var character_rotation : Basis
+	match _orientation:
+		0:	# Face Y
+			character_rotation = Basis.IDENTITY
+
+		1: # Face X
+			character_rotation = Basis.IDENTITY.rotated(Vector3.BACK, PI/2)
+
+		2: # Face Z
+			character_rotation = Basis.IDENTITY.rotated(Vector3.RIGHT, PI/2)
+
+		_: # Tumbling
+			character_rotation = Basis.from_euler(
+				Vector3(
+					_duration * 0.241352, 
+					_duration * 0.328472,
+					_duration * 0.442541))
 
 	# Construct the character position
 	var character_position := Vector3(
@@ -81,9 +91,9 @@ func _on_done_pressed():
 	get_tree().change_scene_to_file("res://main.tscn")
 
 
-func _on_tumble_check_box_toggled(button_pressed):
-	_tumble = button_pressed
-
-
 func _on_collide_check_box_toggled(button_pressed):
 	_collide = button_pressed
+
+
+func _on_orientation_option_button_item_selected(index):
+	_orientation = index

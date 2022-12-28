@@ -31,29 +31,34 @@ offset_bottom = 130.0
 color = Color(0, 0, 0, 0.501961)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 140.0
 offset_bottom = 90.0
 
-[node name="TumbleCheckBox" type="CheckBox" parent="Options/VBoxContainer"]
-offset_right = 130.0
-offset_bottom = 31.0
-text = "Tumble"
+[node name="OrientationOptionButton" type="OptionButton" parent="Options/VBoxContainer"]
+layout_mode = 2
+item_count = 4
+selected = 0
+popup/item_0/text = "Face Y"
+popup/item_0/id = 0
+popup/item_1/text = "Face X"
+popup/item_1/id = 1
+popup/item_2/text = "Face Z"
+popup/item_2/id = 2
+popup/item_3/text = "Tumbling"
+popup/item_3/id = 3
 
 [node name="CollideCheckBox" type="CheckBox" parent="Options/VBoxContainer"]
-offset_top = 35.0
-offset_right = 130.0
-offset_bottom = 66.0
+layout_mode = 2
 button_pressed = true
 text = "Collide"
 
 [node name="Done" type="Button" parent="Options/VBoxContainer"]
-offset_top = 70.0
-offset_right = 130.0
-offset_bottom = 101.0
+layout_mode = 2
 text = "Done"
 
-[connection signal="toggled" from="Options/VBoxContainer/TumbleCheckBox" to="." method="_on_tumble_check_box_toggled"]
+[connection signal="item_selected" from="Options/VBoxContainer/OrientationOptionButton" to="." method="_on_orientation_option_button_item_selected"]
 [connection signal="toggled" from="Options/VBoxContainer/CollideCheckBox" to="." method="_on_collide_check_box_toggled"]
 [connection signal="pressed" from="Options/VBoxContainer/Done" to="." method="_on_done_pressed"]
