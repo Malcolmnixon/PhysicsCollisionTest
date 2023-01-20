@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bor6ivwj58ld0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gut4t"]
+transparency = 1
+
+[resource]
+render_priority = -1
+next_pass = SubResource("StandardMaterial3D_gut4t")
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.25098, 0.752941, 0.752941, 0.752941)

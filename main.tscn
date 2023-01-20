@@ -41,7 +41,7 @@ text = "Static Body"
 [node name="StaticOptions" type="OptionButton" parent="VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 7
+item_count = 8
 selected = 0
 popup/item_0/text = "Sphere"
 popup/item_0/id = 0
@@ -57,6 +57,8 @@ popup/item_5/text = "Concave"
 popup/item_5/id = 5
 popup/item_6/text = "Boundary"
 popup/item_6/id = 6
+popup/item_7/text = "CSG Path"
+popup/item_7/id = 7
 
 [node name="StaticScale" type="OptionButton" parent="VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -108,8 +110,19 @@ popup/item_2/id = 2
 popup/item_3/text = "4x"
 popup/item_3/id = 3
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-text = "View"
+alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="CollideButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Collide"
+
+[node name="SlideButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slide"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CollideButton" to="." method="_on_collide_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SlideButton" to="." method="_on_slide_button_pressed"]

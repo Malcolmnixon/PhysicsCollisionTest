@@ -9,7 +9,8 @@ const STATIC_FILES := [
 	"res://objects/static/static_box.tscn",
 	"res://objects/static/static_convex.tscn",
 	"res://objects/static/static_concave.tscn",
-	"res://objects/static/static_boundary.tscn"
+	"res://objects/static/static_boundary.tscn",
+	"res://objects/static/static_csgpath.tscn"
 ]
 
 ## Table of character body files
@@ -27,7 +28,7 @@ const SCALES := [ 0.5, 1.0, 2.0, 4.0 ]
 
 
 
-func _on_button_pressed():
+func _on_collide_button_pressed():
 	# Select the objects and scales
 	Singleton.static_body_file = STATIC_FILES[%StaticOptions.selected]
 	Singleton.static_body_scale = SCALES[%StaticScale.selected]
@@ -36,3 +37,15 @@ func _on_button_pressed():
 
 	# Switch to the collision test scene
 	get_tree().change_scene_to_file("res://collision_test.tscn")
+
+
+func _on_slide_button_pressed():
+	# Select the objects and scales
+	Singleton.static_body_file = STATIC_FILES[%StaticOptions.selected]
+	Singleton.static_body_scale = SCALES[%StaticScale.selected]
+	Singleton.character_body_file = CHARACTER_FILES[%CharacterOptions.selected]
+	Singleton.character_body_scale = SCALES[%CharacterScale.selected]
+
+	# Switch to the slide test scene
+	get_tree().change_scene_to_file("res://slide_test.tscn")
+

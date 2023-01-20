@@ -1,35 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvw5r14lkgdgr"]
+[gd_scene load_steps=3 format=3 uid="uid://cpyqdsmh5kxyk"]
 
-[ext_resource type="Script" path="res://collision_test.gd" id="1_pa3op"]
+[ext_resource type="Script" path="res://slide_test.gd" id="1_qdb7k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gut4t"]
-transparency = 1
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_mvfuu"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23hi7"]
-render_priority = -1
-next_pass = SubResource("StandardMaterial3D_gut4t")
-transparency = 1
-no_depth_test = true
-shading_mode = 0
-albedo_color = Color(0.25098, 0.752941, 0.752941, 0.752941)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_7ksbl"]
-material = SubResource("StandardMaterial3D_23hi7")
-top_radius = 0.05
-bottom_radius = 0.05
-height = 10.0
-
-[node name="CollisionTest" type="Node3D"]
-script = ExtResource("1_pa3op")
+[node name="SlideTest" type="Node3D"]
+script = ExtResource("1_qdb7k")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 105, 6)
 
-[node name="Normal" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Normal"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -5)
-mesh = SubResource("CylinderMesh_7ksbl")
+[node name="CollisionDebug" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_mvfuu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 110, 0)
@@ -62,15 +44,9 @@ popup/item_2/id = 2
 popup/item_3/text = "Tumbling"
 popup/item_3/id = 3
 
-[node name="CollideCheckBox" type="CheckBox" parent="Options/VBoxContainer"]
-layout_mode = 2
-button_pressed = true
-text = "Collide"
-
 [node name="Done" type="Button" parent="Options/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
 [connection signal="item_selected" from="Options/VBoxContainer/OrientationOptionButton" to="." method="_on_orientation_option_button_item_selected"]
-[connection signal="toggled" from="Options/VBoxContainer/CollideCheckBox" to="." method="_on_collide_check_box_toggled"]
 [connection signal="pressed" from="Options/VBoxContainer/Done" to="." method="_on_done_pressed"]
