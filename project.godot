@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Singleton="*res://singleton.gd"
 
+[editor]
+
+export/convert_text_resources_to_binary=true
+
 [rendering]
 
 renderer/rendering_method="mobile"

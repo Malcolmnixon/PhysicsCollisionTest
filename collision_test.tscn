@@ -5,7 +5,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_7ksbl"]
 top_radius = 0.05
 bottom_radius = 0.05
-height = 4.0
+height = 10.0
 
 [node name="CollisionTest" type="Node3D"]
 script = ExtResource("1_pa3op")
@@ -16,7 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 105, 6)
 [node name="Normal" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Normal"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -5)
 mesh = SubResource("CylinderMesh_7ksbl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

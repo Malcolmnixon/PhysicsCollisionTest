@@ -32,7 +32,7 @@ horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
-columns = 2
+columns = 3
 
 [node name="StaticLabel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -58,6 +58,20 @@ popup/item_5/id = 5
 popup/item_6/text = "Boundary"
 popup/item_6/id = 6
 
+[node name="StaticScale" type="OptionButton" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 4
+selected = 1
+popup/item_0/text = "0.5x"
+popup/item_0/id = 0
+popup/item_1/text = "1x"
+popup/item_1/id = 1
+popup/item_2/text = "2x"
+popup/item_2/id = 2
+popup/item_3/text = "4x"
+popup/item_3/id = 3
+
 [node name="CharacterLabel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Character Body"
@@ -79,6 +93,20 @@ popup/item_4/text = "Convex"
 popup/item_4/id = 4
 popup/item_5/text = "Concave"
 popup/item_5/id = 5
+
+[node name="CharacterScale" type="OptionButton" parent="VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 4
+selected = 1
+popup/item_0/text = "0.5x"
+popup/item_0/id = 0
+popup/item_1/text = "1x"
+popup/item_1/id = 1
+popup/item_2/text = "2x"
+popup/item_2/id = 2
+popup/item_3/text = "4x"
+popup/item_3/id = 3
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2

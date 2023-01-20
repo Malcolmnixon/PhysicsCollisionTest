@@ -6,18 +6,35 @@ var _character_body : CharacterBody3D
 var _orientation := 0
 var _collide := true
 var _duration := 0.0
+var _collision_point_y := 100.0
+var _start_offset_y := 3.0
+var _move_distance_y := 5.0
 
 
 func _ready():
 	# Load the static body file
 	var static_scene := load(Singleton.static_body_file)
 	_static_body = static_scene.instantiate()
+	_static_body.scale = Vector3.ONE * Singleton.static_body_scale
 	add_child(_static_body)
-	
+
 	# Load the static body file
 	var character_scene := load(Singleton.character_body_file)
 	_character_body = character_scene.instantiate()
+	_character_body.scale = Vector3.ONE * Singleton.character_body_scale
 	add_child(_character_body)
+
+	# Calculate collision information
+	_collision_point_y = 100.0 * Singleton.static_body_scale
+	_start_offset_y = 3.0 * Singleton.character_body_scale
+	_move_distance_y = 5.0 * Singleton.character_body_scale
+
+	# Move the camera
+	$Camera3D.global_position = Vector3(
+		0, 
+		_collision_point_y + 5.0 * Singleton.character_body_scale, 
+		6.0 * Singleton.character_body_scale)
+	$Camera3D.look_at(Vector3(0.0, _collision_point_y, 0.0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,10 +64,14 @@ func _process(delta):
 					_duration * 0.328472,
 					_duration * 0.442541))
 
+	# Ensure the basis is scaled appropriately
+	character_rotation = character_rotation.scaled(
+		Vector3.ONE * Singleton.character_body_scale)
+
 	# Construct the character position
 	var character_position := Vector3(
 			sin(_duration * 1.852451) * 2,
-			103,
+			_collision_point_y + _start_offset_y,
 			sin(_duration * 1.622152) * 2)
 
 	# Set the character position and rotation
@@ -63,7 +84,8 @@ func _process(delta):
 		return
 
 	# Move the character down
-	var collision : KinematicCollision3D = _character_body.move_and_collide(Vector3.DOWN * 4)
+	var collision : KinematicCollision3D = _character_body.move_and_collide(
+		Vector3.DOWN * _move_distance_y)
 
 	# Skip if no collision
 	if not collision:
